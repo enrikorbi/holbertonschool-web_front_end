@@ -227,7 +227,7 @@ template {
 
 	/** SECTION **/
 	--section-padding: 5rem 0;
-	--section-header-padding: 0 0 3rem;
+	--section-header-padding: 2rem 0 0;
 	--section-header-align: center;
 	--section-title-font-size: var(--font-size-xx-large);
 	--section-title-font-weight: var(--font-weight-bold);
@@ -591,6 +591,19 @@ ul.row {
 
 /* Section HERO
       ============================= */
+
+@media screen and (max-width: 767px) {
+    .section-hero{
+        margin: -0.1rem 0;
+    }
+    .hero-homepage{
+        background-position: 85% 0;
+    }
+    .section-hero .section-body{
+        padding: 2rem;
+    }
+}
+
 
 .section-hero {
 	position: relative;
@@ -1100,6 +1113,7 @@ textarea:valid:not(:placeholder-shown) {
 
 /* header styles for hamburger */
 .header .menu-icon {
+    display: none;
 	cursor: pointer;
 	padding: 2.5rem;
 	position: relative;
@@ -1132,4 +1146,61 @@ textarea:valid:not(:placeholder-shown) {
 
 .header .menu-icon .navicon::after {
 	top: -.7rem;
+}
+
+/* menu btn */
+.header .menu-btn{
+    display: none;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon {
+	background: transparent;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon::before {
+	transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon::after {
+	transform: rotate(45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon::after,
+.header .menu-btn:checked~.menu-icon .navicon::before {
+	top: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .header{
+        background: var(--color-black);
+    }
+    .header-container{
+        flex-wrap: wrap;
+        padding: 0 1.5rem;
+    }
+
+    .header .menu-icon{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-logo{
+        flex-basis: 70%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px)  {
+    .header-logo{
+        flex-basis: 79%;
+    }
+}
+
+.menu-btn::checked ~ .navbar-menu{
+    display: block;
+}
+
+.menu-btn:checked~.navbar-menu .nav {
+	max-height: 100%;
+	overflow: inherit;
 }
